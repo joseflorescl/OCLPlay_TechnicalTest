@@ -11,8 +11,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - Player
+  - Pickup
   - 
   - 
   - 
@@ -38,6 +38,21 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 1489605181
+    locked: 0
+  - name: Middleground
+    uniqueID: 3776493011
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Pickups
+    uniqueID: 1045619427
+    locked: 0
+  - name: Player
+    uniqueID: 2877956511
+    locked: 0
+  - name: Foreground
+    uniqueID: 521125981
     locked: 0

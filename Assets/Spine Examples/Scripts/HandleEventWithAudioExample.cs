@@ -71,6 +71,10 @@ namespace Spine.Unity.Examples {
 			if (eventMatch) {
 				Play();
 			}
+			else
+			{
+				print("Event No Match!!! Leo");
+			}
 		}
 
 		public void Play () {
