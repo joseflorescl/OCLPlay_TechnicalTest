@@ -41,13 +41,13 @@ public class GameManager : MonoBehaviour
     // Events - Naming Convention
     //   OnClosing: a close event that is raised before a window is closed
     //   OnClosed: one that is raised after the window is closed 
-    public event Action OnGameStart;
+    public event Action<int> OnGameStart;
 
     [Serializable]
     struct LevelConfiguration
     {
         public int treasuresCount;
-        public float speed;
+        public float speed; // TODO: this value is not used yet: the background calculates the speed based on the currentLevel
     }
 
     [Range(1, 3)]
@@ -84,7 +84,7 @@ public class GameManager : MonoBehaviour
     void MainGameEnter()
     {
         treasuresCatched = 0;
-        OnGameStart?.Invoke();
+        OnGameStart?.Invoke(currentLevel);
     }
 
 

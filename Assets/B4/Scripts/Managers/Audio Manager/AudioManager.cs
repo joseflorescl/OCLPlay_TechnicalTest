@@ -18,7 +18,7 @@ public class AudioManager : BaseAudioManager
         GameManager.Instance.OnGameStart -= GameStartHandler;
     }
 
-    private void GameStartHandler()
+    private void GameStartHandler(int currentLevel)
     {
         PlayRandomMusic(data.mainMusic, true);
     }
