@@ -31,6 +31,7 @@ public class SimpleHorizontalBackgroundManager : MonoBehaviour
     [SerializeField] private int size = 2; // Number of repeating sprites that will move horizontally
     [SerializeField] private Transform[] artifactsPrefabs;
     [SerializeField] private int backgroundIndexForArtifacts;
+    [SerializeField] private int backgroundIndexForTreasures;
     [Range(0,1)]
     [SerializeField] private float moreDifficultyPerLevel = 0.2f;
 
@@ -59,12 +60,25 @@ public class SimpleHorizontalBackgroundManager : MonoBehaviour
     private void OnEnable()
     {
         GameManager.Instance.OnGameStart += GameStartHandler;
+        GameManager.Instance.OnTreasureCreated += TreasureCreatedHandler;
     }
 
-    
+
     private void OnDisable()
     {
         GameManager.Instance.OnGameStart -= GameStartHandler;
+        GameManager.Instance.OnTreasureCreated -= TreasureCreatedHandler;
+    }
+
+    private void TreasureCreatedHandler(Transform treasure)
+    {
+        // The treasure will be left in the backgroundIndexForTreasures
+        // TODO: setear correctamente la posición a la derecha de la pantalla 
+        var spritesInBackground = backgrounds[backgroundIndexForTreasures].spriteRenderers;
+
+        var lastSprite = spritesInBackground[spritesInBackground.Length - 1];
+
+        treasure.parent = lastSprite.transform;
     }
 
     private void GameStartHandler(int currentLevel)
@@ -81,6 +95,8 @@ public class SimpleHorizontalBackgroundManager : MonoBehaviour
         InstantiateSpritesForBackground();
         StartPositionForSpritesInBackground();
         PutArtifactsInBackgroundLevel(backgroundIndexForArtifacts);
+
+        GameManager.Instance.BackgroundCreated();
     }
 
     void PutArtifactsInBackgroundLevel(int backgroundIndexForArtifacts)

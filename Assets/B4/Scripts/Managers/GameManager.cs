@@ -42,6 +42,8 @@ public class GameManager : MonoBehaviour
     //   OnClosing: a close event that is raised before a window is closed
     //   OnClosed: one that is raised after the window is closed 
     public event Action<int> OnGameStart;
+    public event Action<int> OnSpawningTreasures;
+    public event Action<Transform> OnTreasureCreated;
 
     [Serializable]
     struct LevelConfiguration
@@ -55,6 +57,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private LevelConfiguration[] levelConfigurations;
 
     int treasuresCatched;
+    List<Transform> treasures = new();
 
     private void Awake()
     {
@@ -92,5 +95,18 @@ public class GameManager : MonoBehaviour
     {
         //TODO: create timeline outro
     }
+
+    public void BackgroundCreated()
+    {
+        OnSpawningTreasures?.Invoke(levelConfigurations[currentLevel - 1].treasuresCount);
+    }
+
+    public void TreasureCreated(Transform treasure)
+    {
+        treasures.Add(treasure);
+        OnTreasureCreated?.Invoke(treasure);
+    }
+
+    // TODO: TreasureCatched, TreasureDestroyed
 
 }
