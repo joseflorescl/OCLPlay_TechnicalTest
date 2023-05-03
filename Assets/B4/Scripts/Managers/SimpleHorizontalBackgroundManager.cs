@@ -70,15 +70,17 @@ public class SimpleHorizontalBackgroundManager : MonoBehaviour
         GameManager.Instance.OnTreasureCreated -= TreasureCreatedHandler;
     }
 
-    private void TreasureCreatedHandler(Transform treasure)
+    private void TreasureCreatedHandler(TreasureController treasure)
     {
-        // The treasure will be left in the backgroundIndexForTreasures
-        // TODO: setear correctamente la posición a la derecha de la pantalla 
-        var spritesInBackground = backgrounds[backgroundIndexForTreasures].spriteRenderers;
+        // Note: It does not work to leave the treasure as a child of a sprite, because the sprite can be reset in its position
+        //  the treasure will be able to disappear BEFORE reaching the left end of the screen
 
-        var lastSprite = spritesInBackground[spritesInBackground.Length - 1];
-
-        treasure.parent = lastSprite.transform;
+        // We set the speed, direction and position on the Y axis of the treasure
+        treasure.Direction = direction;
+        treasure.Speed = speedFactor * backgroundConfigurations[backgroundIndexForTreasures].speed;
+        var pos = treasure.transform.position;
+        pos.y = backgrounds[backgroundIndexForTreasures].spriteRenderers[0].transform.position.y;
+        treasure.transform.position = pos;
     }
 
     private void GameStartHandler(int currentLevel)
@@ -115,7 +117,11 @@ public class SimpleHorizontalBackgroundManager : MonoBehaviour
             for (int n = 0; n < count; n++)
             {
                 // The exact position within the segment is random
-                float xPos = Random.Range(xMin + n * deltaX, xMin + (n + 1) * deltaX);
+                // Boundary condition: "xOffsetArtifact": to ensure that the entire sprite of the artifact falls within the segment
+                float xOffsetArtifact = 3;
+                float xPos = Random.Range(xMin + n * deltaX + xOffsetArtifact, xMin + (n + 1) * deltaX - xOffsetArtifact);
+
+                print("Delta random = " + ((xMin + n * deltaX + xOffsetArtifact) - (xMin + (n + 1) * deltaX - xOffsetArtifact)));
 
                 // The selected artifact is also random
                 int idx = Random.Range(0, artifactsPrefabs.Length);

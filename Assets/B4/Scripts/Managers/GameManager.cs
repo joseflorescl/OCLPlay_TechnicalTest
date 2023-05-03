@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour
     //   OnClosed: one that is raised after the window is closed 
     public event Action<int> OnGameStart;
     public event Action<int> OnSpawningTreasures;
-    public event Action<Transform> OnTreasureCreated;
+    public event Action<TreasureController> OnTreasureCreated;
 
     [Serializable]
     struct LevelConfiguration
@@ -57,7 +57,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private LevelConfiguration[] levelConfigurations;
 
     int treasuresCatched;
-    List<Transform> treasures = new();
+    List<TreasureController> treasures = new();
 
     private void Awake()
     {
@@ -101,12 +101,17 @@ public class GameManager : MonoBehaviour
         OnSpawningTreasures?.Invoke(levelConfigurations[currentLevel - 1].treasuresCount);
     }
 
-    public void TreasureCreated(Transform treasure)
+    public void TreasureCreated(TreasureController treasure)
     {
         treasures.Add(treasure);
         OnTreasureCreated?.Invoke(treasure);
     }
 
-    // TODO: TreasureCatched, TreasureDestroyed
+    // TODO: TreasureCatched
+    public void TreasureDisappears(TreasureController treasure)
+    {
+        treasures.Remove(treasure);
+        Destroy(treasure.gameObject);
+    }
 
 }

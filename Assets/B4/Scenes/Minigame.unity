@@ -251,7 +251,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b91d245525bf544eace72043772159d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 7198546103410124434, guid: e5c004b07ed53c84ca990013d61882e5, type: 3}
+  prefab: {fileID: 3094197168482939387, guid: e5c004b07ed53c84ca990013d61882e5, type: 3}
   initialDelay: 1
   minDelayBetweenSpawning: 2
   maxDelayBetweenSpawning: 4
