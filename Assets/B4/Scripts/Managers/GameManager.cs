@@ -108,12 +108,26 @@ public class GameManager : MonoBehaviour
         OnTreasureCreated?.Invoke(treasure);
     }
 
-    // TODO: TreasureCatched
     public void TreasureDisappears(TreasureController treasure)
+    {
+        DestroyTreasure(treasure);
+    }
+
+    void DestroyTreasure(TreasureController treasure)
     {
         treasures.Remove(treasure);
         Destroy(treasure.gameObject);
     }
+
+    public void TreasureCatched(TreasureController treasure)
+    {
+        DestroyTreasure(treasure);
+        // TODO: gatillar evento OnTreasureCatched que debería ser usado por el AudioMgr y VfxMgr
+    }
+
+    // TODO: identificar cuando el player NO agarra el tesoro para gatillar evento
+    // TODO: el collider pickup del Player SOLO se deberia activar durante la animación de Grab en algunos frames
+    // TODO: agregar la condición de término del juego para pasar a la escena del Outro
 
     public void UIShown()
     {

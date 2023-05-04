@@ -11,7 +11,7 @@ public class SpawnerManager : MonoBehaviour
     [SerializeField] private float maxDelayBetweenSpawning = 4f;
 
 
-    int treasuresCount = 5; // TODO
+    int treasuresCount = 5;
     float treasureSpeed = 5f; // TODO
 
     private void OnEnable()
@@ -52,7 +52,10 @@ public class SpawnerManager : MonoBehaviour
 
             // It remains to be set the speed, direction, and position in the Y axis of the treasure.
             //  That will be done by the Background Manager, who is the one who knows the speed.
-            GameManager.Instance.TreasureCreated(treasure);
+
+            //GameManager.Instance.TreasureCreated(treasure); 
+            //TODO: esta llamda se cambia al Start del TreasureController
+            // esto tiene la ventaja que los tesoros creados a mano haciendo drag&drop, que no son creados por el spawner, se agregarán correctamente a la lista de tesoros que maneja el GM
 
             float delay = Random.Range(minDelayBetweenSpawning, maxDelayBetweenSpawning);
             yield return new WaitForSeconds(delay);
