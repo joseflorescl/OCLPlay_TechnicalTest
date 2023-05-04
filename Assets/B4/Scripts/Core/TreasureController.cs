@@ -2,14 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TreasureController : MonoBehaviour
-{
-    // TODO: implementar la interfaz IVFXEntity para ser usada por el VFX Mgr
-
+public class TreasureController : MonoBehaviour, IVFXEntity
+{    
     public float Speed { get; set; }
     public Vector3 Direction { get; set; }
 
     public float XOffset => xOffset;
+
+    // IVFXEntity
+    public Vector3 Position => transform.position;
 
     float xPositionToDestroy;
     float xOffset;

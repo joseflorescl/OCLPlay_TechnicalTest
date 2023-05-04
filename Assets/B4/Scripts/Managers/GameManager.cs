@@ -45,6 +45,7 @@ public class GameManager : MonoBehaviour
     public event Action<int> OnSpawningTreasures;
     public event Action<TreasureController> OnTreasureCreated;
     public event Action OnGrabButtonPressed;
+    public event Action<TreasureController> OnTreasureCatched;
 
     [Serializable]
     struct LevelConfiguration
@@ -133,6 +134,7 @@ public class GameManager : MonoBehaviour
         treasuresCatched++;
         DestroyTreasure(treasure);
         // TODO: gatillar evento OnTreasureCatched que debería ser usado por el AudioMgr y VfxMgr
+        OnTreasureCatched?.Invoke(treasure);
     }
 
     // TODO: identificar cuando el player NO agarra el tesoro para gatillar evento
