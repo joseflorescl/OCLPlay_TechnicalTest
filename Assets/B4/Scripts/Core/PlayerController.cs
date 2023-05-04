@@ -41,10 +41,7 @@ public class PlayerController : MonoBehaviour
     {
         anim.SetTrigger(grabHash);
         spineAnimationState.SetAnimation(0, cop, false);
-        spineAnimationState.AddAnimation(0, swinging, true, 0);
-
-        // TODO: vfx de las partículas al agarrar un tesoro
-        // TODO: size adecuado del player, ahora está muy grande
+        spineAnimationState.AddAnimation(0, swinging, true, 0);        
     }
     
 }

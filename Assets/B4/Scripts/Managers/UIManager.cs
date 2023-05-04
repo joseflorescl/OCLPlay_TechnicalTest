@@ -53,11 +53,7 @@ public class UIManager : MonoBehaviour
 
         grabButton.SetActive(true);
 
-        GameManager.Instance.UIShown();
-
-        // TODO: setear una var en el GM para el speedFactor, en vez de tener que setearla en el BGManager
-
-
+        GameManager.Instance.UIShown();        
     }
 
     float ActivateTextAnimation(GameObject text)

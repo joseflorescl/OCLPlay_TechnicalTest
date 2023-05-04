@@ -32,8 +32,7 @@ public class SimpleHorizontalBackgroundManager : MonoBehaviour
     [SerializeField] private Transform[] artifactsPrefabs;
     [SerializeField] private int backgroundIndexForArtifacts;
     [SerializeField] private int backgroundIndexForTreasures;
-    [Range(0,1)]
-    [SerializeField] private float moreDifficultyPerLevel = 0.2f;
+    
 
     struct SpritesInBackground
     {
@@ -75,18 +74,15 @@ public class SimpleHorizontalBackgroundManager : MonoBehaviour
         // Note: It does not work to leave the treasure as a child of a sprite, because the sprite can be reset in its position
         //  the treasure will be able to disappear BEFORE reaching the left end of the screen
 
-        // We set the speed, direction and position on the Y axis of the treasure
+        // We set the speed and direction. The position on the Y axis is configured in the prefab
         treasure.Direction = direction;
-        treasure.Speed = speedFactor * backgroundConfigurations[backgroundIndexForTreasures].speed;
-        var pos = treasure.transform.position;
-        pos.y = backgrounds[backgroundIndexForTreasures].spriteRenderers[0].transform.position.y;
-        treasure.transform.position = pos;
+        treasure.Speed = speedFactor * backgroundConfigurations[backgroundIndexForTreasures].speed;        
     }
 
     private void GameStartHandler(int currentLevel)
     {
         paused = false;        
-        speedFactor = 1f + (currentLevel - 1) * moreDifficultyPerLevel; // For example: 1.1 for level 1, 1.2 for level 2        
+        speedFactor = GameManager.Instance.GetSpeedFactorByLevel(currentLevel); 
     }
 
 

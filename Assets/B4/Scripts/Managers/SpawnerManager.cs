@@ -10,16 +10,12 @@ public class SpawnerManager : MonoBehaviour
     [SerializeField] private float minDelayBetweenSpawning = 2f;
     [SerializeField] private float maxDelayBetweenSpawning = 4f;
 
-
-    int treasuresCount = 5;
-    float treasureSpeed = 5f; // TODO
+    int treasuresCount;    
 
     private void OnEnable()
     {
         GameManager.Instance.OnSpawningTreasures += SpawningTreasuresHandler;
     }
-
-   
 
     private void OnDisable()
     {
@@ -32,18 +28,10 @@ public class SpawnerManager : MonoBehaviour
         StartCoroutine(SpawnTreasuresRoutine());
     }
 
-
-    
-
     IEnumerator SpawnTreasuresRoutine()
     {
         yield return new WaitForSeconds(initialDelay);
-
-        float xCameraRight = Camera.main.ViewportToWorldPoint(Vector3.right).x;
-        float xOffset = prefab.GetComponentInChildren<SpriteRenderer>().bounds.extents.x;
-        float xPos = xCameraRight + xOffset;
-        Vector3 position = new Vector3(xPos, prefab.transform.position.y, prefab.transform.position.z);
-        
+        Vector3 position = GetTreasureInitialPosition();
 
         for (int i = 0; i < treasuresCount; i++)
         {
@@ -53,15 +41,25 @@ public class SpawnerManager : MonoBehaviour
             // It remains to be set the speed, direction, and position in the Y axis of the treasure.
             //  That will be done by the Background Manager, who is the one who knows the speed.
 
-            //GameManager.Instance.TreasureCreated(treasure); 
-            //TODO: esta llamda se cambia al Start del TreasureController
-            // esto tiene la ventaja que los tesoros creados a mano haciendo drag&drop, que no son creados por el spawner, se agregarán correctamente a la lista de tesoros que maneja el GM
+            //GameManager.Instance.TreasureCreated(treasure); // This doesn't go here anymore
+            // This call is changed to the Start of the TreasureController.
+            // This has the advantage that hand-created drag&drop treasures, which are not created by the spawner,
+            // will be correctly added to the treasure list managed by the GameManager
 
             float delay = Random.Range(minDelayBetweenSpawning, maxDelayBetweenSpawning);
             yield return new WaitForSeconds(delay);
         }
 
         GameManager.Instance.TreasuresSpawned();
+    }
+
+    Vector3 GetTreasureInitialPosition()
+    {
+        float xCameraRight = Camera.main.ViewportToWorldPoint(Vector3.right).x;
+        float xOffset = prefab.GetComponentInChildren<SpriteRenderer>().bounds.extents.x;
+        float xPos = xCameraRight + xOffset;
+        Vector3 position = new Vector3(xPos, prefab.transform.position.y, prefab.transform.position.z);
+        return position;
     }
 
 }

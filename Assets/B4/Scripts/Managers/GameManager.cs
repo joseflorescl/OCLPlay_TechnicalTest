@@ -47,19 +47,13 @@ public class GameManager : MonoBehaviour
     public event Action OnGrabButtonPressed;
     public event Action<TreasureController> OnTreasureCatched;
     public event Action OnTreasureUncatched;
-    public event Action OnGrabbing;
-
-
-    [Serializable]
-    struct LevelConfiguration
-    {
-        public int treasuresCount;
-        public float speed; // TODO: this value is not used yet: the background calculates the speed based on the currentLevel
-    }
+    public event Action OnGrabbing;    
 
     [Range(1, 3)]
     [SerializeField] private int currentLevel = 1;
-    [SerializeField] private LevelConfiguration[] levelConfigurations;
+    [SerializeField] private int[] treasuresPerLevel;
+    [Range(0, 1)]
+    [SerializeField] private float moreDifficultyPerLevel = 0.2f;
 
     int treasuresCatched;
     List<TreasureController> treasures = new();
@@ -102,7 +96,7 @@ public class GameManager : MonoBehaviour
     void OutroEnter()
     {
         //TODO: create timeline outro
-        // TODO: esperar un delay antes de pasar a la sgte escena
+        //TODO: wait for a delay before moving on to the next scene
         print("Outro Scene");
     }
 
@@ -137,19 +131,14 @@ public class GameManager : MonoBehaviour
     {
         treasureWasCatched = true;
         treasuresCatched++;
-        DestroyTreasure(treasure);
-        // TODO: gatillar evento OnTreasureCatched que debería ser usado por el AudioMgr y VfxMgr
+        DestroyTreasure(treasure);        
         OnTreasureCatched?.Invoke(treasure);
-    }
-
-    // TODO: identificar cuando el player NO agarra el tesoro para gatillar evento
-    // TODO: el collider pickup del Player SOLO se deberia activar durante la animación de Grab en algunos frames
-    // TODO: agregar la condición de término del juego para pasar a la escena del Outro
+    }            
 
     public void UIShown()
     {
         // Only now is when the treasures should start appearing
-        OnSpawningTreasures?.Invoke(levelConfigurations[currentLevel - 1].treasuresCount);
+        OnSpawningTreasures?.Invoke(treasuresPerLevel[currentLevel - 1]);
     }
 
     public void GrabButtonPressed()
@@ -174,6 +163,12 @@ public class GameManager : MonoBehaviour
         {
             OnTreasureUncatched?.Invoke();
         }
+    }
+
+    public float GetSpeedFactorByLevel(int level)
+    {
+        // For example: speed == 1 for level 1, speed == 1.2 for level 2
+        return 1f + (level - 1) * moreDifficultyPerLevel;
     }
 
 }
