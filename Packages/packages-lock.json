@@ -1,5 +1,13 @@
 {
   "dependencies": {
+    "com.esotericsoftware.spine.timeline": {
+      "version": "file:C:/leo/CV_JoseFlores/Búsqueda Trabajo 2023/OCLPlay - Game Engineer/com.esotericsoftware.spine.timeline-4.1",
+      "depth": 0,
+      "source": "local",
+      "dependencies": {
+        "com.unity.timeline": "1.2.10"
+      }
+    },
     "com.unity.2d.animation": {
       "version": "7.0.6",
       "depth": 1,
