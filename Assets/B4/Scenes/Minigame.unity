@@ -1388,6 +1388,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5193c35f396cadc4c88abe4668534ae6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  arloAnimation: {fileID: 1101793957}
+  swinging: {fileID: 11400000, guid: b6cdb5d9e7a484f89a09e790182d4911, type: 2}
+  cop: {fileID: 11400000, guid: 8cc7f36f752324d75ab4c8c98df80534, type: 2}
 --- !u!1 &1232498482
 GameObject:
   m_ObjectHideFlags: 0

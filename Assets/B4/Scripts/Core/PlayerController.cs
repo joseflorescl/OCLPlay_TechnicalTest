@@ -1,18 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Spine.Unity;
 
 public class PlayerController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private AnimationReferenceAsset swinging;
+    [SerializeField] private AnimationReferenceAsset cop;
+
+    SkeletonAnimation arloAnimation;
+    Spine.AnimationState spineAnimationState;
+
+    private void Start()
     {
-        
+        arloAnimation = GetComponentInChildren<SkeletonAnimation>();
+        spineAnimationState = arloAnimation.AnimationState;
+
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnEnable()
     {
-        
+        GameManager.Instance.OnGrabButtonPressed += GrabButtonPressedHandler;
     }
+    
+
+    private void OnDisable()
+    {
+        GameManager.Instance.OnGrabButtonPressed -= GrabButtonPressedHandler;
+    }
+
+    private void GrabButtonPressedHandler()
+    {
+        spineAnimationState.SetAnimation(0, cop, false);
+        spineAnimationState.AddAnimation(0, swinging, true, 0);
+    }
+    
 }
