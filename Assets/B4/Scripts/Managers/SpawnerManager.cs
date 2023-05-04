@@ -60,6 +60,8 @@ public class SpawnerManager : MonoBehaviour
             float delay = Random.Range(minDelayBetweenSpawning, maxDelayBetweenSpawning);
             yield return new WaitForSeconds(delay);
         }
+
+        GameManager.Instance.TreasuresSpawned();
     }
 
 }

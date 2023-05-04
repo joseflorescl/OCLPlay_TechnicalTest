@@ -59,6 +59,7 @@ public class GameManager : MonoBehaviour
 
     int treasuresCatched;
     List<TreasureController> treasures = new();
+    bool validateEndMinigame;
 
     private void Awake()
     {
@@ -81,13 +82,14 @@ public class GameManager : MonoBehaviour
 
     void IntroEnter()
     {
-        //TODO: create timeline intro
+        //TODO: create timeline intro        
         CurrentState = GameState.MainGame;
     }
 
     void MainGameEnter()
     {
         treasuresCatched = 0;
+        validateEndMinigame = false;
         OnGameStart?.Invoke(currentLevel);
     }
 
@@ -95,6 +97,8 @@ public class GameManager : MonoBehaviour
     void OutroEnter()
     {
         //TODO: create timeline outro
+        // TODO: esperar un delay antes de pasar a la sgte escena
+        print("Outro Scene");
     }
 
     public void BackgroundCreated()
@@ -117,10 +121,16 @@ public class GameManager : MonoBehaviour
     {
         treasures.Remove(treasure);
         Destroy(treasure.gameObject);
+
+        if (validateEndMinigame && treasures.Count == 0)
+        {
+            CurrentState = GameState.Outro;
+        }
     }
 
     public void TreasureCatched(TreasureController treasure)
     {
+        treasuresCatched++;
         DestroyTreasure(treasure);
         // TODO: gatillar evento OnTreasureCatched que debería ser usado por el AudioMgr y VfxMgr
     }
@@ -138,6 +148,11 @@ public class GameManager : MonoBehaviour
     public void GrabButtonPressed()
     {
         OnGrabButtonPressed?.Invoke();
+    }
+
+    public void TreasuresSpawned()
+    {
+        validateEndMinigame = true;
     }
 
 }
