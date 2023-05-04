@@ -44,6 +44,7 @@ public class GameManager : MonoBehaviour
     public event Action<int> OnGameStart;
     public event Action<int> OnSpawningTreasures;
     public event Action<TreasureController> OnTreasureCreated;
+    public event Action OnGrabButtonPressed;
 
     [Serializable]
     struct LevelConfiguration
@@ -98,7 +99,7 @@ public class GameManager : MonoBehaviour
 
     public void BackgroundCreated()
     {
-        OnSpawningTreasures?.Invoke(levelConfigurations[currentLevel - 1].treasuresCount);
+        
     }
 
     public void TreasureCreated(TreasureController treasure)
@@ -112,6 +113,17 @@ public class GameManager : MonoBehaviour
     {
         treasures.Remove(treasure);
         Destroy(treasure.gameObject);
+    }
+
+    public void UIShown()
+    {
+        // Only now is when the treasures should start appearing
+        OnSpawningTreasures?.Invoke(levelConfigurations[currentLevel - 1].treasuresCount);
+    }
+
+    public void GrabButtonPressed()
+    {
+        OnGrabButtonPressed?.Invoke();
     }
 
 }

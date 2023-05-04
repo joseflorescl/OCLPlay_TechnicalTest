@@ -16,4 +16,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: e9ae172b6dd99334493d0d2072f5ba02, type: 3}
   playerTODO: []
   treasurePickup: []
+  grabButtonPressed:
+  - {fileID: 8300000, guid: 28657553524f7924abe54f66ce034c15, type: 3}
   voiceTODO: []

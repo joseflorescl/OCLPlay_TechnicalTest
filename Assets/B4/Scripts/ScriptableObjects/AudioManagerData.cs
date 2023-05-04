@@ -15,6 +15,7 @@ public class AudioManagerData : ScriptableObject
     [Space(10)]
     [Header("Gameplay SFX Sounds")]
     public AudioClip[] treasurePickup;
+    public AudioClip[] grabButtonPressed;
 
     [Space(10)]
     [Header("Voice Sounds")]
