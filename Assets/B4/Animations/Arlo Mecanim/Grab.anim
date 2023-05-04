@@ -233,6 +233,13 @@ AnimationClip:
   m_HasGenericRootTransform: 1
   m_HasMotionFloatCurves: 0
   m_Events:
+  - time: 0
+    functionName: GrabStart
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 0.31666666
     functionName: ActivatePickupCollider
     data: 
@@ -242,6 +249,13 @@ AnimationClip:
     messageOptions: 0
   - time: 0.75
     functionName: DeactivatePickupCollider
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.8
+    functionName: GrabEnd
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

@@ -22,4 +22,16 @@ public class PlayerAnimationEvents : MonoBehaviour
     {  
         coll2D.enabled = false; 
     }
+
+    public void GrabStart()
+    {
+        GameManager.Instance.GrabStart();
+    }
+
+    public void GrabEnd()
+    {
+        GameManager.Instance.GrabEnd();
+    }
+
+
 }

@@ -14,8 +14,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainMusic:
   - {fileID: 8300000, guid: e9ae172b6dd99334493d0d2072f5ba02, type: 3}
-  playerTODO: []
-  treasurePickup: []
+  arloGrabbing:
+  - {fileID: 8300000, guid: 79fb7af3c4db44741bdf5dd0f758628c, type: 3}
+  - {fileID: 8300000, guid: d6e71fb23bb121e4590c9d29da845695, type: 3}
+  treasurePickup:
+  - {fileID: 8300000, guid: 0e258e0fc2c525e48914bf27cdbf0a60, type: 3}
   grabButtonPressed:
   - {fileID: 8300000, guid: 28657553524f7924abe54f66ce034c15, type: 3}
-  voiceTODO: []
+  voiceArloTreasureCatched:
+  - {fileID: 8300000, guid: 81b4483f8b7a48e49a0ec2eb861962d1, type: 3}
+  - {fileID: 8300000, guid: 471fc7b7b8805fe4aa8ec8fd181b6c81, type: 3}
+  - {fileID: 8300000, guid: a677cace55badc04691b2885fb139807, type: 3}
+  - {fileID: 8300000, guid: 5865f06afcf59f7439118fd5045f8c14, type: 3}
+  voiceArloTreasureUncatched:
+  - {fileID: 8300000, guid: 001fc3d4161f99349aed1339ec10827c, type: 3}
+  - {fileID: 8300000, guid: c95e042a71a2899468ff51d0b7bc4d4a, type: 3}
+  volumeScaleTreasurePickup: 0.35
+  volumeScaleArloVoice: 4

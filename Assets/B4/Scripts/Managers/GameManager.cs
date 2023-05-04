@@ -46,6 +46,9 @@ public class GameManager : MonoBehaviour
     public event Action<TreasureController> OnTreasureCreated;
     public event Action OnGrabButtonPressed;
     public event Action<TreasureController> OnTreasureCatched;
+    public event Action OnTreasureUncatched;
+    public event Action OnGrabbing;
+
 
     [Serializable]
     struct LevelConfiguration
@@ -61,6 +64,7 @@ public class GameManager : MonoBehaviour
     int treasuresCatched;
     List<TreasureController> treasures = new();
     bool validateEndMinigame;
+    bool treasureWasCatched;
 
     private void Awake()
     {
@@ -131,6 +135,7 @@ public class GameManager : MonoBehaviour
 
     public void TreasureCatched(TreasureController treasure)
     {
+        treasureWasCatched = true;
         treasuresCatched++;
         DestroyTreasure(treasure);
         // TODO: gatillar evento OnTreasureCatched que debería ser usado por el AudioMgr y VfxMgr
@@ -155,6 +160,20 @@ public class GameManager : MonoBehaviour
     public void TreasuresSpawned()
     {
         validateEndMinigame = true;
+    }
+
+    public void GrabStart()
+    {
+        treasureWasCatched = false;
+        OnGrabbing?.Invoke();
+    }
+
+    public void GrabEnd()
+    {
+        if (!treasureWasCatched)
+        {
+            OnTreasureUncatched?.Invoke();
+        }
     }
 
 }

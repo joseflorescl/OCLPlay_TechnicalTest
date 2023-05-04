@@ -10,7 +10,7 @@ public class AudioManagerData : ScriptableObject
 
     [Space(10)]
     [Header("Player SFX Sounds")]
-    public AudioClip[] playerTODO; // TODO: sfx player
+    public AudioClip[] arloGrabbing;
     
     [Space(10)]
     [Header("Gameplay SFX Sounds")]
@@ -19,5 +19,11 @@ public class AudioManagerData : ScriptableObject
 
     [Space(10)]
     [Header("Voice Sounds")]
-    public AudioClip[] voiceTODO; // TODO: voice sounds
+    public AudioClip[] voiceArloTreasureCatched;
+    public AudioClip[] voiceArloTreasureUncatched;
+
+    [Space(10)]
+    [Header("Settings")]
+    public float volumeScaleTreasurePickup = 0.5f;
+    public float volumeScaleArloVoice = 2f;
 }
