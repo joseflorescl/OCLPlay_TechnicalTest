@@ -9,12 +9,15 @@ public class SceneController : MonoBehaviour
 
     private void OnEnable()
     {
-        GameManager.Instance.OnGameEnd += GameEndHandler;
+        // Border condition: GameManager is NOT used in the Intro scene
+        if (GameManager.Instance != null)
+            GameManager.Instance.OnGameEnd += GameEndHandler;
     }    
 
     private void OnDisable()
     {
-        GameManager.Instance.OnGameEnd -= GameEndHandler;
+        if (GameManager.Instance != null)
+            GameManager.Instance.OnGameEnd -= GameEndHandler;
     }
 
     private void GameEndHandler()
