@@ -65,7 +65,7 @@ MonoBehaviour:
     m_Start: 0
     m_ClipIn: 0
     m_Asset: {fileID: 4867801001560927938}
-    m_Duration: 2.162716501392424
+    m_Duration: 1.8
     m_TimeScale: 1
     m_ParentTrack: {fileID: -7815609457909715985}
     m_EaseInDuration: 0
@@ -98,7 +98,25 @@ MonoBehaviour:
       m_RotationOrder: 4
     m_MixOutCurve:
       serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -113,10 +131,10 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: BasicAnimations_Walk
   - m_Version: 1
-    m_Start: 2.162716501392424
-    m_ClipIn: 1.496016495861113
+    m_Start: 1.8
+    m_ClipIn: 1.133299994468689
     m_Asset: {fileID: -4892031196702128694}
-    m_Duration: 2.2212858645866316
+    m_Duration: 2.584002365979056
     m_TimeScale: 1
     m_ParentTrack: {fileID: -7815609457909715985}
     m_EaseInDuration: 0
@@ -125,25 +143,7 @@ MonoBehaviour:
     m_BlendOutDuration: -1
     m_MixInCurve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -1451,13 +1451,13 @@ MonoBehaviour:
     m_Start: 5.498757403576747
     m_ClipIn: 0
     m_Asset: {fileID: -6560216966318267384}
-    m_Duration: 6.634575929756586
+    m_Duration: 19.858145790407434
     m_TimeScale: 1
     m_ParentTrack: {fileID: 1634632176861755510}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
-    m_BlendInDuration: -1
-    m_BlendOutDuration: -1
+    m_BlendInDuration: 7.328327935421839
+    m_BlendOutDuration: 4.406988505739719
     m_MixInCurve:
       serializedVersion: 2
       m_Curve: []
@@ -1484,13 +1484,13 @@ MonoBehaviour:
     m_Start: 0
     m_ClipIn: 0
     m_Asset: {fileID: -7627712710123281471}
-    m_Duration: 5.498757403576747
+    m_Duration: 12.827085338998586
     m_TimeScale: 1
     m_ParentTrack: {fileID: 1634632176861755510}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
     m_BlendInDuration: -1
-    m_BlendOutDuration: -1
+    m_BlendOutDuration: 7.328327935421839
     m_MixInCurve:
       serializedVersion: 2
       m_Curve: []
@@ -1499,7 +1499,25 @@ MonoBehaviour:
       m_RotationOrder: 4
     m_MixOutCurve:
       serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -1514,37 +1532,19 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: CM Zoom Bridge Left
   - m_Version: 1
-    m_Start: 12.133333333333333
+    m_Start: 20.949914688244462
     m_ClipIn: 0
     m_Asset: {fileID: 2456851753479212406}
-    m_Duration: 17.433333333333334
+    m_Duration: 8.616751978422203
     m_TimeScale: 1
     m_ParentTrack: {fileID: 1634632176861755510}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
-    m_BlendInDuration: -1
+    m_BlendInDuration: 4.406988505739719
     m_BlendOutDuration: -1
     m_MixInCurve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
