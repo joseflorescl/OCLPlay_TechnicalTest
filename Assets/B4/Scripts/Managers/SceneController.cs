@@ -5,7 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour
 {
-    public enum SceneName { Intro = 0, Minigame, Outro }
+    enum SceneName { Intro = 0, Minigame, Outro }
+
+    [SerializeField] private float delayLoadOutro = 0.5f;
 
     private void OnEnable()
     {
@@ -22,6 +24,12 @@ public class SceneController : MonoBehaviour
 
     private void GameEndHandler()
     {
+        StartCoroutine(LoadOutroRoutine());
+    }
+
+    IEnumerator LoadOutroRoutine()
+    {
+        yield return new WaitForSeconds(delayLoadOutro);
         LoadOutro();
     }
 

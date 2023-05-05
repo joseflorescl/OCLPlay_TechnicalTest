@@ -5,6 +5,24 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    /*
+     * Game Settings in the Inspector
+     * 
+     * 1. Game Object "Game Manager"
+     *   To configure the level of the game, the "Current Level" parameter is used, which now allows the values 1, 2, 3.
+     * 
+     *   The amount of treasures that will appear for each level is configured in the "Treasures Per Level" array.
+     *   The size of this array MUST be equal to the maximum number of levels in the game.
+     * 
+     *   The speed at which the treasures will move will increase as you level up the game.
+     *   To configure how much this speed increases, use the "More Difficulty Per Level" parameter.
+     * 
+     * 2. Game Object "Background Manager"
+     * 
+     *   The speed at which the background moves for difficulty level 1 is configured in the
+     *   in the "Background Configuration" parameter.          
+     */
+
     // Singleton class
     private static GameManager instance = null;
     public static GameManager Instance => instance;
