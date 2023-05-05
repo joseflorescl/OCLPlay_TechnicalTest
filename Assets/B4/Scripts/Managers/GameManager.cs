@@ -47,13 +47,15 @@ public class GameManager : MonoBehaviour
     public event Action OnGrabButtonPressed;
     public event Action<TreasureController> OnTreasureCatched;
     public event Action OnTreasureUncatched;
-    public event Action OnGrabbing;    
+    public event Action OnGrabbing;
+    public event Action OnGameEnd;
 
     [Range(1, 3)]
     [SerializeField] private int currentLevel = 1;
     [SerializeField] private int[] treasuresPerLevel;
     [Range(0, 1)]
     [SerializeField] private float moreDifficultyPerLevel = 0.2f;
+    [SerializeField] private float delayBeforeOutro = 1f;
 
     int treasuresCatched;
     List<TreasureController> treasures = new();
@@ -81,7 +83,6 @@ public class GameManager : MonoBehaviour
 
     void IntroEnter()
     {
-        //TODO: create timeline intro        
         CurrentState = GameState.MainGame;
     }
 
@@ -95,9 +96,13 @@ public class GameManager : MonoBehaviour
 
     void OutroEnter()
     {
-        //TODO: create timeline outro
-        //TODO: wait for a delay before moving on to the next scene
-        print("Outro Scene");
+        StartCoroutine(OutroRoutine());
+    }
+
+    IEnumerator OutroRoutine()
+    {        
+        yield return new WaitForSeconds(delayBeforeOutro);
+        OnGameEnd?.Invoke();
     }
 
     public void BackgroundCreated()
